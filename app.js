@@ -27,6 +27,7 @@ var storage = multer.diskStorage({
     cb(null, './uploads/')
   },
   filename: function (req, file, cb) {
+    //ADD LOGIC TO CHECK FOR ALL IMAGES TYPES, RIGHT NOW ONLY APPENDING JPG
     cb(null, file.fieldname + '-' + Date.now() + ".jpg")
   }
 })
