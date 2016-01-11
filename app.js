@@ -17,7 +17,6 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 app.use(logger('dev'));
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -31,9 +30,8 @@ var storage = multer.diskStorage({
     cb(null, file.fieldname + '-' + Date.now() + ".jpg")
   }
 })
- 
-var upload = multer({ storage: storage })
 
+var upload = multer({storage: storage})
 
 app.get('/', routes.index);
 app.post('/upload', upload.single('file'), routes.upload);
