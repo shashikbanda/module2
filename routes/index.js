@@ -6,6 +6,8 @@ var mime = require('mime');
 var imgurUploader = require("imgur-uploader")
 var knex = require('../db/knex');
 
+var imageArray = [];
+
 //Constants
 var TARGET_PATH = path.resolve(__dirname, '../uploads/');
 module.exports = {
@@ -18,12 +20,13 @@ module.exports = {
 		var uploadsLocation = path.join(TARGET_PATH, fileName)
 
 		imgurUploader(fs.readFileSync(uploadsLocation)).then(data => {
-			console.log(data.link)
-			return data.link;
-    	}).then(function(imageLink){
-    		knex('users').insert({photo1: imageLink}).then(function(){
-    			console.log("should have added hello to the users table ")
-    		})
+			imageArray.push(data.link)
+			return imageArray;
+    	}).then(function(imageArray){
+    		res.render("uploads",{images:imageArray})
+    		// knex('users').where({id:2}).insert({photo1: imageLink}).then(function(){
+    		// 	res.render("uploads", {image:imageLink});
+    		// })
     	})
     }
 }
