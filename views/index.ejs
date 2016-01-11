@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>upload</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <section id="upload">
+    	<form action="/upload" method="post" enctype="multipart/form-data">
+          <label for="file">Select your image:</label>
+          <input type="file" name="file" id="file" />
+          <span class="hint">Supported files: jpg, jpge, png.</span>
+          <button type="submit">upload</button>
+        </form>
+    </section>
   </body>
 </html>
