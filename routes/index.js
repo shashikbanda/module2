@@ -5,7 +5,7 @@ var uid = require('uid2');
 var mime = require('mime');
 
 //Constants
-var TARGET_PATH = path.resolve(__dirname, './uploads/');
+// var TARGET_PATH = path.resolve(__dirname, '../uploads/');
 
 module.exports = {
 	index: function(req, res, next){
@@ -14,7 +14,8 @@ module.exports = {
 	upload: function(req, res,next){
 		var is;
 		var os;
-		
-		console.log(req)
+
+		var targetPath;
+		var targetName; 
     }
 }
