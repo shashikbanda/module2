@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer')
 
+var knex = require('./db/knex');
+
 var fs= require('fs')
 var app = express();
 var routes = require('./routes');
