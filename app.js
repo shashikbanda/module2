@@ -11,6 +11,8 @@ var knex = require('./db/knex');
 var fs= require('fs')
 var app = express();
 var routesUpload = require('./routes/upload');
+var routesAuth = require('./routes/auth')
+var routesIndex = require('./routes/index')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
   app.use('/upload', routesUpload)
-// app.get('/', routes.index);
+  app.use('/', routesIndex);
 // app.post('/upload', upload.single('file'), routes.upload);
 // app.get('/profile', routes.profile)
 
