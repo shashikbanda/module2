@@ -10,7 +10,7 @@ var knex = require('./db/knex');
 
 var fs= require('fs')
 var app = express();
-var routes = require('./routes/index');
+var routesUpload = require('./routes/upload');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,9 +35,11 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage})
 
-app.get('/', routes.index);
-app.post('/upload', upload.single('file'), routes.upload);
-app.get('/profile', routes.profile)
+
+  app.use('/upload', routesUpload)
+// app.get('/', routes.index);
+// app.post('/upload', upload.single('file'), routes.upload);
+// app.get('/profile', routes.profile)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
