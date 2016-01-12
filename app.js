@@ -10,7 +10,7 @@ var knex = require('./db/knex');
 
 var fs= require('fs')
 var app = express();
-var routes = require('./routes/');
+var routesUpload = require('./routes/upload');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,23 +23,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads/')
-  },
-  filename: function (req, file, cb) {
-    //ADD LOGIC TO CHECK FOR ALL IMAGES TYPES, RIGHT NOW ONLY APPENDING JPG
-    cb(null, file.fieldname + '-' + Date.now() + ".jpg")
-  }
-})
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './uploads/')
+//   },
+//   filename: function (req, file, cb) {
+//     //ADD LOGIC TO CHECK FOR ALL IMAGES TYPES, RIGHT NOW ONLY APPENDING JPG
+//     cb(null, file.fieldname + '-' + Date.now() + ".jpg")
+//   }
+// })
 
-var upload = multer({storage: storage})
+// var upload = multer({storage: storage})
 
 
-  // app.use('/upload', routesUpload)
-app.get('/', routes.index);
-app.post('/upload', upload.single('file'), routes.upload);
-app.get('/profile', routes.profile)
+  app.use('/upload', routesUpload)
+// app.get('/', routes.index);
+// app.post('/upload', upload.single('file'), routes.upload);
+// app.get('/profile', routes.profile)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

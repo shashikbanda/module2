@@ -23,7 +23,7 @@ module.exports = {
 			imageArray.push(data.link)
 			return imageArray;
     	}).then(function(imageArray){
-    		res.render("uploads",{images:imageArray}) 		
+    		res.render("uploads") 		
     	})
     },
     profile: function(req, res, next){
