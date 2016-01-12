@@ -10,7 +10,7 @@ var knex = require('./db/knex');
 
 var fs= require('fs')
 var app = express();
-var routes = require('./routes');
+var routes = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,6 +37,7 @@ var upload = multer({storage: storage})
 
 app.get('/', routes.index);
 app.post('/upload', upload.single('file'), routes.upload);
+app.get('/profile', routes.profile)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

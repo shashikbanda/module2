@@ -23,10 +23,12 @@ module.exports = {
 			imageArray.push(data.link)
 			return imageArray;
     	}).then(function(imageArray){
-    		res.render("uploads",{images:imageArray})
-    		// knex('users').where({id:2}).insert({photo1: imageLink}).then(function(){
-    		// 	res.render("uploads", {image:imageLink});
-    		// })
+    		res.render("uploads",{images:imageArray}) 		
     	})
+    },
+    profile: function(req, res, next){
+	    knex('users').insert({photo1: imageArray}).then(function(){
+			res.render("profile", {image: imageArray})
+		})
     }
 }
