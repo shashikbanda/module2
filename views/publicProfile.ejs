@@ -4,3 +4,12 @@
 <h3> last name : <%= last_name %> </h3>
 <h3> role : <%= role %> </h3>
 <img src=" <%= main_picture %>" style="width:304px;height:228px;">
+
+<p>images associated with user </p>
+<table>
+<% for(var i=0; i < photoArray.length; i++) { %>
+   <tr>
+     <td><img src="<%= photoArray[i].photo %> style="width:304;height:228";</td>
+   </tr>
+<% } %>
+</table>

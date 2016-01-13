@@ -29,8 +29,16 @@ router.get('/facebook/callback', passport.authenticate('facebook', {
 									successRedirect: '/auth/success',
                                     failureRedirect: '/' }));
 router.get('/success', function(req, res, next){
-	// knex('us ers').
-	res.redirect('/signup/roleSelect/' + req.session.passport.user.id);
+	var id = req.session.passport.user.id;
+	knex('users').where({userID: id}).then(function(rows){
+		if(rows.length === 0){
+			res.redirect("/signup/roleSelect/"+id)
+		}
+		else{
+			res.redirect("/private/"+id);
+		}
+	})
+	// res.redirect('/signup/roleSelect/' + req.session.passport.user.id);
 })
 
 module.exports = {
