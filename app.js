@@ -3,16 +3,22 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require("cookie-session")
 var bodyParser = require('body-parser');
-var multer = require('multer')
+var multer = require('multer');
+// require('dotenv').load();
 
 var knex = require('./db/knex');
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook');
+
 
 var fs= require('fs')
 var app = express();
-var routesUpload = require('./routes/upload');
-var routesAuth = require('./routes/auth')
 var routesIndex = require('./routes/index')
+var routesUpload = require('./routes/upload');
+var routesAuth = require('./routes/auth');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,35 +31,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './uploads/')
-//   },
-//   filename: function (req, file, cb) {
-//     //ADD LOGIC TO CHECK FOR ALL IMAGES TYPES, RIGHT NOW ONLY APPENDING JPG
-//     cb(null, file.fieldname + '-' + Date.now() + ".jpg")
-//   }
-// })
+app.use(cookieSession({
+  name: 'session',
+  keys: ["key1","key2"]
+}));
+app.use(routesAuth.passport.initialize());
+app.use(routesAuth.passport.session());
 
-// var upload = multer({storage: storage})
+app.use('/', routesIndex);
+app.use('/upload', routesUpload);
+app.use('/auth', routesAuth.router);
 
 
-  app.use('/upload', routesUpload)
-  app.use('/', routesIndex);
-// app.post('/upload', upload.single('file'), routes.upload);
-// app.get('/profile', routes.profile)
 
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -64,8 +60,6 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {

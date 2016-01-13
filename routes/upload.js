@@ -35,6 +35,7 @@ router.post('/continue', upload.single('file'), function(req, res, next){
 			imageArray.push(data.link)
 			return imageArray;
     	}).then(function(imageArray){
+    		// knex('users').where()
     		res.render("uploads") 		
     })
 })
@@ -42,9 +43,10 @@ router.post('/continue', upload.single('file'), function(req, res, next){
 router.get('/view', function(req,res,next){
 	//THIS ROUTE WAS ORIGINALLY CALLED PROFILE, RENAMING TO VIEW
 	// /UPLOAD/VIEW
-	knex('users').insert({photo1:imageArray}).then(function(){
-		res.render("profile", {image:imageArray})
-	})
+	res.render("profile", {image:imageArray})
+	// knex('users').insert({photo1:imageArray}).then(function(){
+	// 	res.render("profile", {image:imageArray})
+	// })
 })
 
 module.exports = router;
