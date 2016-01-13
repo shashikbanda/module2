@@ -1,0 +1,18 @@
+<h1> private profile page</h1>
+
+<h3> first name : <%= first_name %> </h3>
+<h3> last name : <%= last_name %> </h3>
+<h3> role : <%= role %> </h3>
+<img src=" <%= main_picture %>" style="width:304px;height:228px;">
+
+<p>images associated with user </p>
+<table>
+<% for(var i=0; i < photoArray.length; i++) { %>
+   <tr>
+     <td><%= photoArray[0][i]%></td>
+   </tr>
+<% } %>
+</table>
+
+<a href="/upload"> Upload Photos </a>
+<a href="/public/<%= userID %>">View Public Profile </a>

@@ -5,7 +5,8 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'meetupApp'
-    }
+      database: 'meetup'
+    },
+    debug:true
   }
 }

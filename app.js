@@ -15,9 +15,12 @@ var FacebookStrategy = require('passport-facebook');
 
 var fs= require('fs')
 var app = express();
+
 var routesIndex = require('./routes/index')
 var routesUpload = require('./routes/upload');
 var routesAuth = require('./routes/auth');
+var routesPublic = require('./routes/public')
+var routesPrivate = require('./routes/private');
 
 
 // view engine setup
@@ -41,6 +44,8 @@ app.use(routesAuth.passport.session());
 app.use('/', routesIndex);
 app.use('/upload', routesUpload);
 app.use('/auth', routesAuth.router);
+app.use('/public', routesPublic);
+app.use('/private', routesPrivate);
 
 
 
@@ -68,6 +73,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+app.listen(3000, function(){
+  console.log("listen on port 3000")
+})
 
 module.exports = app;

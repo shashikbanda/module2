@@ -20,33 +20,26 @@ var imageArray = [];
 var TARGET_PATH = path.resolve(__dirname, '../uploads/');
 
 router.get('/', function(req, res, next){
-	// /UPLOAD/
 	res.render("index") // RENAME TO upload, index page for upload functionality
 })
 
 router.post('/continue', upload.single('file'), function(req, res, next){
-	//THIS ROUTE WAS ORIGINALLY CALLED UPLOAD, RENAMING TO CONTINUE
-	// /UPLOAD/CONTINUE
 	var fileName = req.file.filename;
 	var filePath = req.file.path;
 	var uploadsLocation = path.join(TARGET_PATH, fileName)
+	var currentUserId = req.session.passport.user.id;
 
 	imgurUploader(fs.readFileSync(uploadsLocation)).then(data => {
 			imageArray.push(data.link)
-			return imageArray;
-    	}).then(function(imageArray){
-    		// knex('users').where()
-    		res.render("uploads") 		
+			knex('photos').where({userID:currentUserId}).insert({userID:currentUserId,photo:data.link}).then(function(photoObj){
+				res.render("uploads")
+			})
     })
 })
 
 router.get('/view', function(req,res,next){
-	//THIS ROUTE WAS ORIGINALLY CALLED PROFILE, RENAMING TO VIEW
-	// /UPLOAD/VIEW
 	res.render("profile", {image:imageArray})
-	// knex('users').insert({photo1:imageArray}).then(function(){
-	// 	res.render("profile", {image:imageArray})
-	// })
+
 })
 
 module.exports = router;
