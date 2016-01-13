@@ -14,7 +14,7 @@
             });
         });
 
-
+<<<<<<< HEAD
 $(function() {
 $('#scroller').hover(function() { 
     $('#ceemee').fadeIn(); 
@@ -32,7 +32,8 @@ $('#scroller').hover(function() {
 });
 
 
-
+=======
+>>>>>>> aa3ae050b2dc7238331d7bba2e94c55fb9b7dec4
 /*!
  * Materialize v0.97.5 (http://materializecss.com)
  * Copyright 2014-2015 Materialize

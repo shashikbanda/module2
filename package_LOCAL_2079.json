@@ -29,11 +29,6 @@
   "description": "hi shik hi luis",
   "main": "app.js",
   "devDependencies": {},
-    "serve-favicon": "~2.3.0"
-  },
-  "description": "hi shik hi luis",
-  "main": "app.js",
->>>>>>> aa3ae050b2dc7238331d7bba2e94c55fb9b7dec4
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shashikbanda/module2.git"

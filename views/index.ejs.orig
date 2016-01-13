@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<<<<<<< HEAD
+    <title>Upload</title>
+
+
+
+<% include partials/head %>
+  
+  </head>
+
+ <body class="grey lighten-5">
+
+
+
+  <% include partials/navbar %>      
+
+ <div class="container">
+
+
+ <div class="col s10 offset-s1" style="padding-top:25px;">
+    <section id="upload">
+      <form action="/upload/continue/" method="post" enctype="multipart/form-data">
+       <div class="file-field input-field">
+        <div class="btn blue darken-2">
+          <span>Image:</span>
+          <input type="file" name="file" id="file" />
+        </div>
+        <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Supported files: jpg, jpge, png.">
+      </div>
+      </div>
+      <button class="btn waves-effect waves-light blue darken-2" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+      </form>
+    </section>
+    ​
+  </div>  
+  </div>
+  </div>
+
+
+    <% include partials/footer %>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+  ​<script src="javascript/init.js"></script>   
+=======
+    <title><%= title %></title>
+
+  <link rel="stylesheet" src="/stylesheets/style.css">
+    	  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+ 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+
+    <script src="javascript/init.js"></script>    
+
+
+      
+	</head>
+ 	<body>
+
+  <div class="parallax-container" style="height:100vh;">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text">Module 2 project</h1>
+        <div class="row center">
+          <h5 class="header col s12 white-text">A place for creatives to get together.</h5>
+        </div>
+        <div class="row center">
+          <a href="ENTER URL HERE" id="download-button" class="btn-large waves-effect waves-light red lighten-1"><i class="material-icons left">android</i>Sign up with Google</a>
+          <br>
+          <br>
+
+           <a href="ENTER URL HERE" id="download-button" class="btn-large waves-effect waves-light blue lighten-1"> <i class="material-icons left">email</i>Sign up with E-mail</a>
+
+        <br><br>
+        <br><br>
+        <br><br>  <br><br>
+        <br><br>
+        <br><br>  <br><br>
+        <br><br>
+        <br><br>
+     
+        <br><br>
+        <br>
+        <br>
+        <br>
+        <br>
+      <a class="btn-floating btn-large waves-effect waves-light blue-grey lighten-5 " id="scroller"><i class="material-icons" style="color:black; transform: rotate(90deg);">fast_forward</i></a>
+
+      </div>
+
+        </div>
+       
+
+
+    
+
+    <div class="parallax"><img src="images/apple-macbook-camera-cup.jpg"></div>
+  </div>
+
+  <img class="responsive-img" id="secondarybanner" src="images/hotlinegrid.jpg">
+
+
+    <div class="section grey lighten-5" >
+     <div class="row">
+
+      <div class="col s4 center">
+        <i class="material-icons medium">videocam</i>
+        <h4> Photographers </h4>
+        <p> Organic venmo brunch normcore. Chia twee cred, green juice aesthetic 8-bit locavore narwhal stumptown. Skateboard bespoke irony literally four loko ethical. Brooklyn fingerstache literally godard aesthetic.  </p>
+      </div>
+      <div class="col s4 center">
+        <i class="material-icons medium">person_pin</i>
+        <h4> Models </h4>
+        <p> Waistcoat bicycle rights keffiyeh artisan. Fashion axe humblebrag gentrify, messenger bag intelligentsia migas helvetica austin mixtape occupy skateboard tumblr small batch normcore photo booth.</p>
+      </div>
+      <div class="col s4 center me">
+        <i class="material-icons medium">settings_remote</i>
+        <h4> MUA's </h4>
+        <p>Readymade viral affogato sartorial, cliche hella cardigan knausgaard. Gluten-free meditation disrupt, pitchfork photo booth tattooed normcore stumptown vice venmo portland salvia keytar tacos.</p>
+      </div>
+    </div>
+    </div>
+	  
+
+
+>>>>>>> aa3ae050b2dc7238331d7bba2e94c55fb9b7dec4
+  </body>
+</html>
