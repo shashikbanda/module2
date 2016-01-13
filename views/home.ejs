@@ -2,66 +2,39 @@
 <html>
   <head>
     <title>Meetup</title>
-​
-  <link rel="stylesheet" src="/stylesheets/style.css">
-    	  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-​
- 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
-​
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
-​
-    <script src="javascript/init.js"></script>    
-​
-​
-      
-	</head>
- 	<body>
-​
+
+
+
+<% include partials/head %>
+
+  </head>
+
+ <body>
   <div class="parallax-container" style="height:100vh;">
-      <div class="container">
-        <br><br>
-        <h1 class="header center white-text">Module 2 project</h1>
+    <div class="container">
+      <h1 class="header center white-text light">Module 2 project</h1>
         <div class="row center">
-          <h5 class="header col s12 white-text">A place for creatives to get together.</h5>
+          <h5 class="header col s12 white-text thin">A place for creatives to get together.</h5>
         </div>
+        
         <div class="row center">
-          <a href="ENTER URL HERE" id="download-button" class="btn-large waves-effect waves-light red lighten-1"><i class="material-icons left">android</i>Sign up with Google</a>
+          <a href="ENTER URL HERE" id="download-button" class="btn-large waves-effect waves-light blue darken-1"><i class="fa fa-facebook left"></i>Sign up with Facebook</a>
           <br>
           <br>
+          <a href="ENTER URL HERE" id="download-button" class="btn-large waves-effect waves-light red darken-1"> <i class="material-icons left">email</i>Sign up with E-mail</a>
+          <br>
+          <p class="white-text thin">LOG-IN</p>
 ​
-           <a href="ENTER URL HERE" id="download-button" class="btn-large waves-effect waves-light blue lighten-1"> <i class="material-icons left">email</i>Sign up with E-mail</a>
-​
-        <br><br>
-        <br><br>
-        <br><br>  <br><br>
-        <br><br>
-        <br><br>  <br><br>
-        <br><br>
-        <br><br>
-     
-        <br><br>
-        <br>
-        <br>
-        <br>
-        <br>
-      <a class="btn-floating btn-large waves-effect waves-light blue-grey lighten-5 " id="scroller"><i class="material-icons" style="color:black; transform: rotate(90deg);">fast_forward</i></a>
-​
+      <div style="position: absolute; left:0; right:0; margin-left: auto; margin-right: auto; bottom:10px;">
+      <p class="thin white-text" id="ceemee" > see more </p>
+      <a class="btn-floating btn-large waves-effect waves-circle waves blue-grey lighten-5"  id="scroller"><i class="material-icons" style=" color:black; transform: rotate(90deg);">fast_forward</i></a>
       </div>
 ​
-        </div>
-       
-​
-​
-    
-​
-    <div class="parallax"><img src="images/apple-macbook-camera-cup.jpg"></div>
+    </div>
+​  </div>
+  <div class="parallax"><img src="images/apple-macbook-camera-cup.jpg"></div>
   </div>
-​
-  <img class="responsive-img" id="secondarybanner" src="images/hotlinegrid.jpg">
-​
-​
+​<img class="responsive-img" id="secondarybanner" src="images/hotlinegrid.jpg">
     <div class="section grey lighten-5" >
      <div class="row">
 ​
@@ -84,6 +57,7 @@
     </div>
 	  
 ​
-​
+​    ​<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+    ​<script src="javascript/init.js"></script>   
   </body>
 </html>

@@ -14,6 +14,23 @@
             });
         });
 
+$(function() {
+$('#scroller').hover(function() { 
+    $('#ceemee').fadeIn(); 
+}, function() { 
+    $('#ceemee').fadeOut(); 
+});
+});
+
+$(function() {
+$('#scroller').hover(function() { 
+    $(this).css("opacity", "1");
+    }, function(){
+    $(this).css("opacity", "0.5");
+});
+});
+
+
 /*!
  * Materialize v0.97.5 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
