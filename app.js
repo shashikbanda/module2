@@ -68,6 +68,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+module.exports = app;
 
+//helpers 
+app.listen(8080);
 
 module.exports = app;
