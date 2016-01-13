@@ -11,8 +11,8 @@ router.get('/:userID', function(req, res, next){
 	}).then(function(userObj){
 		knex('photos').where({userID:id}).then(function(photoObj){
 			// console.log(photoObj)
-			res.send(photoObj)
-			// res.render('privateProfile', {main_picture:userObj[0]['main_picture'], first_name:userObj[0]['first_name'], last_name:userObj[0]['last_name'], role:userObj[0]['role'], userID:userObj[0]['userID'], photoArray:photoObj})
+			// res.send(photoObj)
+			res.render('privateProfile', {main_picture:userObj[0]['main_picture'], first_name:userObj[0]['first_name'], last_name:userObj[0]['last_name'], role:userObj[0]['role'], userID:userObj[0]['userID'], photoArray:photoObj})
 		})
 	})
 })
