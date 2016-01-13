@@ -12,20 +12,15 @@ passport.use(new FacebookStrategy({
 	profileFields: ['id', 'name', 'photos', 'emails']
 },
 function(accessToken, refreshToken, profile, done) {
-	var currentEmail = profile.emails[0].value;
+
 	return done(null, profile);
   }
 ))
 
 passport.serializeUser(function(user, done) {
-	// console.log(user)
 	done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
-	// knex("user").insert({email: obj.emails[0].value}).then(function(email){
-	// 	console.log("done")
-	// 	// done(null, obj);
-	// })
 	done(null, obj);
 });
 
@@ -36,9 +31,12 @@ router.get('/facebook/callback', passport.authenticate('facebook', {
 router.get('/success', function(req, res, next){
 	var first_name = req.session.passport.user.name.givenName;
 	var last_name = req.session.passport.user.name.familyName;
-	var email = req.session.passport.user.emails[0].value;
+	var userEmail = req.session.passport.user.emails[0].value;
+	var profPicLink = req.session.passport.user.photos[0].value;
 
-	knex('users')
+	knex('users').where({email: null}).insert({email:userEmail, name: first_name, main_picture:profPicLink }).then(function(){
+		console.log("checked database")
+	})
 	res.render("index")
 })
 
