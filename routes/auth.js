@@ -38,9 +38,7 @@ router.get('/success', function(req, res, next){
 			res.redirect("/private/"+id);
 		}
 	})
-	// res.redirect('/signup/roleSelect/' + req.session.passport.user.id);
 })
-
 module.exports = {
 	router:router,
 	passport:passport
