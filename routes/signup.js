@@ -5,8 +5,6 @@ var router = express.Router();
 var bcrypt = require('bcrypt')
 var knex = require('../db/knex')
 
-
-
 router.get('/roleSelect/:userID', function(req, res, next){
 	var id = req.params.userID;
 	console.log("id passed to signup/rolselect = " + id)
@@ -39,15 +37,12 @@ router.post('/email', function(req, res, next){
 			console.log("email is already in use")
 		}
 	})
-
 	knex('users').where({email:email}).first().then(function(user){
 	    if(!user) {
 	      var hash = bcrypt.hashSync(password, 8);
 	      knex('users').where({email:email}).update({
 	        password: hash
 	      }).then(function(id) {
-	      	console.log("below is id information")
-	      	console.log(id)
 	        res.cookie('userID', id[0], { signed: true });
 	        res.redirect("/signup/roleSelect/"+id)
 	      });
@@ -57,6 +52,5 @@ router.post('/email', function(req, res, next){
 	    }
   	});
 })
-
 
 module.exports = router;

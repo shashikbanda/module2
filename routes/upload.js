@@ -24,6 +24,10 @@ router.get('/:userID', function(req, res, next){
 	res.render("index", {userID:id}) // RENAME TO upload, index page for upload functionality
 })
 
+// router.get('/customPic/:userID', function(req, res, next){
+// 	var id = req.params.userID;
+// })
+
 router.post('/continue/:userID', upload.single('file'), function(req, res, next){
 	var fileName = req.file.filename;
 	var filePath = req.file.path;

@@ -10,11 +10,17 @@ router.get('/', function(req, res, next){
 })
 
 router.get('/login', function(req, res, next){
-	res.render("login")
+	if(req.signedCookies.userID === undefined){
+		res.render("login")
+	}
+	else{
+		res.redirect('/private/'+req.signedCookies.userID)
+	}
 })
 router.post('/login', function(req,res,next){
 	knex("users").where({email: req.body.email}).first().then(function(user){
-		console.log(user.userID)
+		console.log(user)
+		// console.log(user.userID)
     if(user) {
       if(bcrypt.compareSync(req.body.password, user.password)) {
         res.cookie('userID', user.userID, { signed: true });
