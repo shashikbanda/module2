@@ -16,9 +16,9 @@
   <% include partials/navbar %>      
 
  <div class="container">
-
-
  <div class="col s10 offset-s1" style="padding-top:25px;">
+ <div class="card white">
+  <div class="card-content black-text">
     <section id="upload">
       <form action="/upload/continue/<%= userID %>" method="post" enctype="multipart/form-data">
        <div class="file-field input-field">
@@ -35,15 +35,14 @@
   </button>
       </form>
     </section>
-    ​
+    </div>
+    </div>
   </div>  
   </div>
   </div>
 
 
     <% include partials/footer %>
-
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
-  ​<script src="javascript/init.js"></script>   
+    
   </body>
 </html>

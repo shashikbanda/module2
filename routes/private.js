@@ -4,15 +4,29 @@ var router = express.Router();
 var knex = require('../db/knex')
 
 router.get('/:userID', function(req, res, next){
+	console.log("req.params.userID = " + req.params.userID)
 	console.log("req.signedCookies.userID = " +req.signedCookies.userID)
-	if(req.signedCookies.userID === req.params.userID) {
+	// if((req.signedCookies.userID === req.params.userID) && (req.session.passport.user.id===req.params.userID)) {
+
+	if((req.signedCookies.userID === req.params.userID) && (req.session.passport===undefined)) {
 		var id = req.params.userID;
 		knex('users').where({userID:id}).then(function(userObj){
 			return userObj
 		}).then(function(userObj){
 			console.log(userObj)
 			knex('photos').where({userID:id}).then(function(photoObj){
-				res.render('privateProfile', {main_picture:userObj[0]['main_picture'], first_name:userObj[0]['first_name'], last_name:userObj[0]['last_name'], role:userObj[0]['role'], userID:userObj[0]['userID'], photoArray:photoObj})
+				res.render('privateProfile', {main_picture:userObj[0]['main_picture'], first_name:userObj[0]['first_name'], last_name:userObj[0]['last_name'], city:userObj[0]['city'], role:userObj[0]['role'], userID:userObj[0]['userID'], photoArray:photoObj})
+			})
+		})
+	}
+	else if(req.session.passport!==undefined){
+		var id = req.params.userID;
+		knex('users').where({userID:id}).then(function(userObj){
+			return userObj
+		}).then(function(userObj){
+			console.log(userObj)
+			knex('photos').where({userID:id}).then(function(photoObj){
+				res.render('privateProfile', {main_picture:userObj[0]['main_picture'], first_name:userObj[0]['first_name'], last_name:userObj[0]['last_name'], city:userObj[0]['city'], role:userObj[0]['role'], userID:userObj[0]['userID'], photoArray:photoObj})
 			})
 		})
 	}

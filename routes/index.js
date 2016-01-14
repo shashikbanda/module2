@@ -23,6 +23,7 @@ router.post('/login', function(req,res,next){
 		// console.log(user.userID)
     if(user) {
       if(bcrypt.compareSync(req.body.password, user.password)) {
+      	console.log("user obj = " + user.userID)
         res.cookie('userID', user.userID, { signed: true });
         res.redirect('/private/' + user.userID);
       } else {
@@ -35,6 +36,15 @@ router.post('/login', function(req,res,next){
     }
   });
 })
+
+
+// router.post('/delete/:userID', function(req, res, next){
+
+// })
+
+// router.get('/delete/:userID', function(req, res, next){
+// 	res.render
+// })
 
 router.get('/logout', function(req, res, next){
 	res.clearCookie('userID');

@@ -8,6 +8,7 @@ var knex = require('../db/knex')
 router.get('/roleSelect/:userID', function(req, res, next){
 	var id = req.params.userID;
 	console.log("id passed to signup/rolselect = " + id)
+	console.log("req.signedCookies.userID = " +req.signedCookies.userID)
 	res.render("roleSelect",{userID:id})
 })
 router.get('/email', function(req, res, next){
@@ -29,28 +30,30 @@ router.post('/email', function(req, res, next){
 					last_name: lastname, 
 					email: email, 
 					city: city})
-			.then(function(check){
-				res.redirect("/signup/roleSelect/"+id)
+			.then(function(){
+				knex('users').where({email:email}).first().then(function(user){
+					console.log("entering the knex promise")
+					console.log(user)
+				    if(user) {
+				      var hash = bcrypt.hashSync(password, 8);
+				      knex('users').where({email:email}).update({
+				        password: hash
+				      }).then(function() {
+				        res.cookie('userID', id, { signed: true });
+				        res.redirect("/signup/roleSelect/"+id)
+				      });
+				    } else {
+				      res.status(409);
+				      res.redirect('/login.html?error=You have already signed up. Please login.');
+				    }
+  				});
+				// res.redirect("/signup/roleSelect/"+id)
 			})
 		}
 		else{ //EMAIL ALREADY IN DATABASE
 			console.log("email is already in use")
 		}
 	})
-	knex('users').where({email:email}).first().then(function(user){
-	    if(!user) {
-	      var hash = bcrypt.hashSync(password, 8);
-	      knex('users').where({email:email}).update({
-	        password: hash
-	      }).then(function(id) {
-	        res.cookie('userID', id[0], { signed: true });
-	        res.redirect("/signup/roleSelect/"+id)
-	      });
-	    } else {
-	      res.status(409);
-	      res.redirect('/login.html?error=You have already signed up. Please login.');
-	    }
-  	});
 })
 
 module.exports = router;
