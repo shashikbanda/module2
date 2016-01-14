@@ -21,6 +21,7 @@ var routesUpload = require('./routes/upload');
 var routesAuth = require('./routes/auth');
 var routesPublic = require('./routes/public')
 var routesPrivate = require('./routes/private');
+var routesSignup = require('./routes/signup');
 
 
 // view engine setup
@@ -46,6 +47,7 @@ app.use('/upload', routesUpload);
 app.use('/auth', routesAuth.router);
 app.use('/public', routesPublic);
 app.use('/private', routesPrivate);
+app.use('/signup', routesSignup);
 
 
 

@@ -8,6 +8,7 @@ router.get('/:userID', function(req, res, next){
 	knex('users').where({userID:id}).then(function(userObj){
 		return userObj
 	}).then(function(userObj){
+		console.log(userObj)
 		knex('photos').where({userID:id}).then(function(photoObj){
 			res.render('privateProfile', {main_picture:userObj[0]['main_picture'], first_name:userObj[0]['first_name'], last_name:userObj[0]['last_name'], role:userObj[0]['role'], userID:userObj[0]['userID'], photoArray:photoObj})
 		})
@@ -40,23 +41,14 @@ router.post('/:userID', function(req, res, next){
 		var id = req.params.userID;
 		var role = req.body.role;
 		console.log("role = " + role)
-
-		knex('users').where({userID: req.params.userID}).insert({role:role}).then(function(rows){
-			console.log("role should be added")
-			res.redirect("/private/"+id);
-			// if(rows.length === 0){
-			// 	knex('users').insert({userID:id, first_name: firstname, last_name: lastname, email: email, 
-			// 							city: city, main_picture:"", role: role})
-			// 	.then(function(){
-			// 		res.redirect("/private/"+id);
-			// 	})
-			// }
-			// else{
-			// 	res.redirect("/private/"+id);
-			// }
+		knex('users').where({userID: id}).then(function(rows){
+			if(rows.length === 1){
+				knex('users').where({userID: id}).update({role: role})
+				.then(function(){
+					res.redirect("/private/"+id);
+				})
+			}
 		})
 	}
-	
-
 })
 module.exports = router;
