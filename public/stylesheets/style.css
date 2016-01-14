@@ -9,6 +9,8 @@
   }
       
 
+
+
 #ceemee {
 	display: none;
 }
@@ -17,3 +19,6 @@
 	opacity: 0.5;
 }
 
+.brighten img:hover {
+  -webkit-filter: brightness(70%);
+}
