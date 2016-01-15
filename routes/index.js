@@ -37,16 +37,8 @@ router.post('/login', function(req,res,next){
   });
 })
 
-
-// router.post('/delete/:userID', function(req, res, next){
-
-// })
-
-// router.get('/delete/:userID', function(req, res, next){
-// 	res.render
-// })
-
 router.get('/logout', function(req, res, next){
+  req.logout();
 	res.clearCookie('userID');
   	res.redirect('/');
 })

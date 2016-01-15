@@ -36,7 +36,7 @@ router.get('/:userID', function(req, res, next){
 			})
 		})
 	}
-	else if(req.session.passport!==undefined){
+	else if(req.session.passport!==undefined ){
 		var id = req.params.userID;
 		knex('users').where({userID:id}).then(function(userObj){
 			return userObj
@@ -66,6 +66,7 @@ router.post('/update/:userID',upload.single('file'), function(req, res, next){
     })
 })
 router.post('/:userID', function(req, res, next){
+	console.log(req)
 	if(req.session.passport !== undefined){
 		var first_name = req.session.passport.user.name.givenName;
 		var last_name = req.session.passport.user.name.familyName;

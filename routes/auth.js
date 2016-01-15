@@ -39,6 +39,11 @@ router.get('/success', function(req, res, next){
 		}
 	})
 })
+router.get('/logout', function(req, res, next){
+	req.logout();
+	res.clearCookie('userID');
+  	res.redirect('/');
+})
 module.exports = {
 	router:router,
 	passport:passport
