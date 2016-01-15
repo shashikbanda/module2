@@ -19,7 +19,8 @@
  <div class="col s10 offset-s1" style="padding-top:25px;">
  <div class="card white">
   <div class="card-content black-text">
-    <section id="upload">
+     <span class="card-title">Upload a profile pic:</span>
+   
       <form action="/private/update/<%= userID %>" method="post" enctype="multipart/form-data">
        <div class="file-field input-field">
         <div class="btn blue darken-2">
@@ -34,7 +35,6 @@
     <i class="material-icons right">send</i>
   </button>
       </form>
-    </section>
     </div>
     </div>
   </div>  
@@ -43,6 +43,6 @@
 
 
     <% include partials/footer %>
-    
+      
   </body>
 </html>

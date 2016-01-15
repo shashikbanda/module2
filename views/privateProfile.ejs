@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Profile</title>
   <% include partials/head %> 
 </head>
 
@@ -19,12 +19,16 @@
       
      
     <img src=" <%= main_picture %>" class="circle" style="width:100px; height:100px;"><br>
-    <%= first_name %> <%= last_name %> </span><br>
+    <span style="font-size:125%;"><%= first_name %> <%= last_name %> </span><br>
  
-  role : <%= role %><br>
-  city: <%= city %><br>
-  
+  Role : <%= role %><br>
+  City: <%= city %><br>
       </div>
+      <div class="card-action">
+              <a href="/upload/customPic/<%= userID %>">Upload Profile Pic</a><br>
+              <a href="/upload/<%= userID %>">Upload Photos</a>
+            </div>
+  
       </div>
       </div>
 
@@ -32,10 +36,11 @@
       <div class="card white">     
      <div class="card-content black-text">
 
+
     <div class="row">
     <% for(var i=0; i < photoArray.length; i++) { %>
     <div class="col s4">
-    <a href="#" class="responsive-img" data-featherlight="<%= photoArray[i].photo %>"> <img class="responsive-img"style="display: inline-block; background-size: cover; background-position: center center; height: 27vh; width: 27vh; padding: 5px;" src="<%= photoArray[i].photo %>"></a> 
+    <a href="#" class="responsive-img" data-featherlight="<%= photoArray[i].photo %>"> <img class="responsive-img " style="display: inline-block; background-size: cover; background-position: center center; height: 27vh; width: 27vh; padding: 5px;" src="<%= photoArray[i].photo %>"></a> 
     </div>
     <% } %>
 
@@ -47,10 +52,21 @@
 
 
 </div>
+</div>
+</div>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
   ​<script src="javascript/init.js"></script>  
   <script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+$(function() {
+$('.responsive-img').hover(function() { 
+    $(this).css("opacity", "0.5");
+    }, function(){
+    $(this).css("opacity", "1");
+});
+});
+  </script>
 </body>
 </html>
 

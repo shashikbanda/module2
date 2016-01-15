@@ -38,7 +38,7 @@ router.post('/continue/:userID', upload.single('file'), function(req, res, next)
 	imgurUploader(fs.readFileSync(uploadsLocation)).then(data => {
 			imageArray.push(data.link)
 			knex('photos').where({userID:currentUserId}).insert({userID:currentUserId,photo:data.link}).then(function(photoObj){
-				res.render("uploads", {userID:currentUserId})
+				res.redirect("/private/" + currentUserId)
 			})
     })
 })

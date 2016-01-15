@@ -19,29 +19,27 @@
  <div class="col s10 offset-s1" style="padding-top:25px;">
  <div class="card white">
   <div class="card-content black-text">
-    <section id="upload">
+   <span class="card-title">Upload new portfolio content:</span>
+
       <form action="/upload/continue/<%= userID %>" method="post" enctype="multipart/form-data">
        <div class="file-field input-field">
         <div class="btn blue darken-2">
           <span>Image:</span>
-          <input type="file" name="file" id="file" />
+          <input type="file" name="file" id="file" >
         </div>
         <div class="file-path-wrapper">
         <input class="file-path validate" type="text" placeholder="Supported files: jpg, jpge, png.">
       </div>
       </div>
       <button class="btn waves-effect waves-light blue darken-2" type="submit" name="action">Submit
-
     <i class="material-icons right">send</i>
   </button>
-  
       </form>
-    </section>
     </div>
     </div>
   </div>  
   </div>
-  </div>
+
 
     <% include partials/footer %>
     
