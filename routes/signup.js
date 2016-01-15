@@ -51,7 +51,7 @@ router.post('/email', function(req, res, next){
 			})
 		}
 		else{ //EMAIL ALREADY IN DATABASE
-			console.log("email is already in use")
+			res.render("emailTaken")
 		}
 	})
 })

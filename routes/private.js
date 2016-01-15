@@ -48,7 +48,7 @@ router.get('/:userID', function(req, res, next){
 		})
 	}
 	else{
-		console.log("NOT AUTHORIZED TO VIEW THIS PAGE GTFO")
+		res.render("notAuthorized")
 	}
 })
 router.post('/update/:userID',upload.single('file'), function(req, res, next){
