@@ -6,8 +6,8 @@ var cookieSession = require("cookie-session")
 var knex = require('../db/knex');
 
 passport.use(new FacebookStrategy({
-	clientID:"1700367380186405",
-	clientSecret:"e51788f34365250fc6d520d92ae648d5",
+	clientID:"",
+	clientSecret:"",
 	callbackURL: "http://localhost:3000/auth/facebook/callback",
 	profileFields: ['id', 'name', 'photos', 'emails']
 },
