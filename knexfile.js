@@ -6,7 +6,12 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'meetup'
-    },
-    debug:true
+    }
+  },
+  production: {
+    client: 'postgres',
+    connection: {
+    	database: 'meetup'
+    }
   }
 }
