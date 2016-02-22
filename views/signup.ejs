@@ -18,15 +18,15 @@
 <span class="card-title">Enter your info:</span>
 <form action="/signup/email" method="post">
   <br>First name:<br>
-  <input type="text" name="firstname"><br>
+  <input type="text" name="firstname" required><br>
   <br>Last name:<br>
-  <input type="text" name="lastname">
+  <input type="text" name="lastname" required>
   <br>City:<br>
-  <input type="text" name="city">
+  <input type="text" name="city" required>
   <br>Email:<br>
-  <input type="email" name="email">
+  <input type="email" name="email" required>
   <br>Password <br>
-  <input type="password" name="password">
+  <input type="password" name="password" required>
 
    <button class="btn waves-effect waves-light blue darken-2" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
