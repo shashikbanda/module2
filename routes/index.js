@@ -6,7 +6,7 @@ var bcrypt = require("bcrypt")
 var knex = require('../db/knex')
 
 router.get('/', function(req, res, next){
-	res.render("home")//MAIN PAGE EJS FILE GOES HERE
+	res.render("home")
 })
 
 router.get('/login', function(req, res, next){
@@ -20,7 +20,6 @@ router.get('/login', function(req, res, next){
 router.post('/login', function(req,res,next){
 	knex("users").where({email: req.body.email}).first().then(function(user){
 		console.log(user)
-		// console.log(user.userID)
     if(user) {
       if(bcrypt.compareSync(req.body.password, user.password)) {
       	console.log("user obj = " + user.userID)

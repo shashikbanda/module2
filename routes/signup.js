@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 
-// var cookie = require('cookie-parser')
 var bcrypt = require('bcrypt')
 var knex = require('../db/knex')
 
@@ -47,7 +46,6 @@ router.post('/email', function(req, res, next){
 				      res.redirect('/login.html?error=You have already signed up. Please login.');
 				    }
   				});
-				// res.redirect("/signup/roleSelect/"+id)
 			})
 		}
 		else{ //EMAIL ALREADY IN DATABASE

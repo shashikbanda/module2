@@ -23,8 +23,6 @@ var knex = require('../db/knex')
 router.get('/:userID', function(req, res, next){
 	console.log("req.params.userID = " + req.params.userID)
 	console.log("req.signedCookies.userID = " +req.signedCookies.userID)
-	// if((req.signedCookies.userID === req.params.userID) && (req.session.passport.user.id===req.params.userID)) {
-
 	if((req.signedCookies.userID === req.params.userID) && (req.session.passport===undefined)) {
 		var id = req.params.userID;
 		knex('users').where({userID:id}).then(function(userObj){

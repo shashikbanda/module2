@@ -21,7 +21,7 @@ var TARGET_PATH = path.resolve(__dirname, '../uploads/');
 
 router.get('/:userID', function(req, res, next){
 	var id = req.params.userID;
-	res.render("index", {userID:id}) // RENAME TO upload, index page for upload functionality
+	res.render("index", {userID:id}) 
 })
 
 router.get('/customPic/:userID', function(req, res, next){

@@ -12,7 +12,6 @@ passport.use(new FacebookStrategy({
 	profileFields: ['id', 'name', 'photos', 'emails']
 },
 function(accessToken, refreshToken, profile, done) {
-	// console.log(profile)
 	return done(null, profile);
   }
 ))
