@@ -11,6 +11,9 @@ This application was build with Node/Express, Twitter Bootstrap, and postgreSQL.
 First make sure you have set up a postgreSQL database on your local machine and name that database meetup. Once you fork and clone the repo: 
 
 ```npm install```
+
 ```knex init```
+
 ```knex migrate:latest```
-```node server.js```
+
+```node app.js```
